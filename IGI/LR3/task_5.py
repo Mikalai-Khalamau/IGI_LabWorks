@@ -26,7 +26,6 @@ def task_5():
         data_list = init_list_manual(size)
     else:
         data_list = list(init_list_generator(size))
-
     # Check if list is empty
     if not data_list:
         print("\nList is empty. Cannot process.")

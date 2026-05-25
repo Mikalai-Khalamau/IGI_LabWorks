@@ -22,6 +22,7 @@ def init_list_manual(size):
     return lst
 
 
+<<<<<<< HEAD
 def number_generator(size, min_val=-100, max_val=100):
     """
     Generator function with yield.
@@ -38,5 +39,3 @@ def init_list_generator(size, min_val=-100, max_val=100):
     lst = list(gen)
 
     print(f"\nGenerated list ({size} elements):")
-    print(f"  {lst}")
-    return lst

@@ -1,0 +1,9 @@
+---
+pid: 25084
+cwd: |
+  C:\Users\khala
+---
+PS C:\Users\khala>
+ *  History restored 
+
+PS C:\Users\khala> 

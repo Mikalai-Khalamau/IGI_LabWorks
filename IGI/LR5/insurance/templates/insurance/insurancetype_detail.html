@@ -1,0 +1,13 @@
+{% extends "insurance/base.html" %}
+{% block content %}
+<h1>{{ insurance_type.name }}</h1>
+<p><strong>Тарифная ставка:</strong> {{ insurance_type.tariff_rate }}</p>
+<p><strong>Комиссия агента, %:</strong> {{ insurance_type.agent_commission_percent }}</p>
+<p>
+  {% if show_crm_tools %}
+    <a href="{% url 'insurance:insurancetype-update' insurance_type.pk %}">Изменить</a>
+    <a href="{% url 'insurance:insurancetype-delete' insurance_type.pk %}">Удалить</a>
+  {% endif %}
+  <a href="{% url 'insurance:insurancetype-list' %}">К списку</a>
+</p>
+{% endblock %}

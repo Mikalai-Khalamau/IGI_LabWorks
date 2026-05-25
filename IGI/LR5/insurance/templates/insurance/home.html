@@ -1,0 +1,16 @@
+{% extends "insurance/base.html" %}
+{% load insurance_extras %}
+{% block content %}
+<h1>Главная</h1>
+{% if latest_news %}
+  <section>
+    <h2>Последняя опубликованная новость</h2>
+    <p><strong>{{ latest_news.title }}</strong> <small>({{ latest_news.published_at|date:"d.m.Y" }})</small></p>
+    <p>{{ latest_news.summary }}</p>
+    <p><img src="{% picture_src latest_news.image_url 'insurance/images/news_1.svg' %}" alt="{{ latest_news.title }}" width="400" height="200"></p>
+    <p><a href="{% url 'insurance:news-detail' latest_news.slug %}">Читать далее</a></p>
+  </section>
+{% else %}
+  <p>Новостей пока нет — добавьте через админку или <code>seed_data</code>.</p>
+{% endif %}
+{% endblock %}

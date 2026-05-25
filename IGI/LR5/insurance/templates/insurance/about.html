@@ -1,0 +1,19 @@
+{% extends "insurance/base.html" %}
+{% block title %}О компании{% endblock %}
+{% block content %}
+<h1>О компании</h1>
+{% if company %}
+  <div>{{ company.about_text|linebreaks }}</div>
+  <h2>Реквизиты</h2>
+  <table border="1" cellpadding="8">
+    <tr><th>Поле</th><th>Значение</th></tr>
+    {% for row in company.requisites.all %}
+      <tr><td>{{ row.label }}</td><td>{{ row.value }}</td></tr>
+    {% empty %}
+      <tr><td colspan="2">Реквизиты не заполнены.</td></tr>
+    {% endfor %}
+  </table>
+{% else %}
+  <p>Данные «О компании» не созданы. Добавьте <code>CompanyProfile</code> в админке.</p>
+{% endif %}
+{% endblock %}

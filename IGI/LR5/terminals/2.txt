@@ -1,0 +1,6 @@
+---
+pid: 15136
+cwd: |
+  C:\Users\khala
+---
+PS C:\Users\khala> 

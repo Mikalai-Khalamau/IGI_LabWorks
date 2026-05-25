@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Страховая (лаб.){% endblock %}</title>
+  <script src="{% static 'insurance/js/table_filter.js' %}" defer></script>
+</head>
+<body>
+  <header>
+    <p><strong>Сайт</strong></p>
+    <nav>
+      <a href="{% url 'insurance:home' %}">Главная</a> |
+      <a href="{% url 'insurance:about' %}">О компании</a> |
+      <a href="{% url 'insurance:news-list' %}">Новости</a> |
+      <a href="{% url 'insurance:faq-list' %}">Словарь / FAQ</a> |
+      <a href="{% url 'insurance:contact-list' %}">Контакты</a> |
+      <a href="{% url 'insurance:vacancy-list' %}">Вакансии</a> |
+      <a href="{% url 'insurance:review-list' %}">Отзывы</a> |
+      <a href="{% url 'insurance:promo-list' %}">Промокоды</a> |
+      <a href="{% url 'insurance:privacy' %}">Политика конфиденциальности</a>
+      {% if user.is_authenticated %}
+        | <a href="{% url 'insurance:holidays-page' 2026 %}">Праздники (API)</a>
+      {% endif %}
+    </nav>
+    <p><strong>Личный кабинет</strong></p>
+    <nav>
+      {% if is_client_group or user.is_superuser %}
+        <a href="{% url 'insurance:client-dashboard' %}">Кабинет клиента</a>
+      {% endif %}
+      {% if show_crm_tools %}
+        | <a href="{% url 'insurance:employee-dashboard' %}">Кабинет сотрудника</a>
+        | <a href="{% url 'insurance:employee-contract-list' %}">Договоры (поиск)</a>
+        | <a href="{% url 'insurance:stats-dashboard' %}">Статистика</a>
+      {% endif %}
+    </nav>
+    <p><strong>Справочники</strong></p>
+    <nav>
+      <a href="{% url 'insurance:branch-list' %}">Филиалы</a> |
+      <a href="{% url 'insurance:insurancetype-list' %}">Виды страхования и тарифы</a>
+    </nav>
+    {% if show_crm_tools %}
+    <p><strong>CRM (сотрудники)</strong></p>
+    <nav>
+      <a href="{% url 'insurance:agent-list' %}">Агенты</a> |
+      <a href="{% url 'insurance:client-list' %}">Клиенты</a> |
+      <a href="{% url 'insurance:insuredobject-list' %}">Объекты</a> |
+      <a href="{% url 'insurance:contract-list' %}">Договоры</a>
+    </nav>
+    {% endif %}
+    <p>
+      {% if user.is_authenticated %}
+        Вы вошли как {{ user.username }}.
+        <form method="post" action="{% url 'logout' %}" style="display:inline;">
+          {% csrf_token %}
+          <button type="submit">Выйти</button>
+        </form>
+      {% else %}
+        <a href="{% url 'login' %}">Вход</a> |
+        <a href="{% url 'insurance:register' %}">Регистрация</a>
+      {% endif %}
+      | <a href="/admin/">Админка</a>
+    </p>
+  </header>
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

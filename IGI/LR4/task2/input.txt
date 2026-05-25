@@ -1,0 +1,3 @@
+Hello World! This is a TEST text.
+How are you? I'm fine :) Thanks ;---((
+ррбббсс — это паттерн для замены на ddd.

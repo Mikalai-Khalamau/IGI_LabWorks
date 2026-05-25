@@ -1,0 +1,19 @@
+Task 2 | Variant 27 Results
+Source file: input.txt
+Original length: 113 chars
+
+uppercase_english (10 items): H, W, T, T, E, S, T, H, I, T
+replaced_text_preview: Hello World! This is a TEST text.
+How are you? I'm fine :) Thanks ;---((
+ррбббсс — это паттерн для з...
+total_sentences: 4
+sentence_types:
+  - declarative (.): 2
+  - interrogative (?): 1
+  - imperative (!): 1
+avg_sentence_len_words: 19.25
+avg_word_len: 3.67
+smiley_count: 0
+words_len_less_5 (15 items): This, is, a, TEST, text, How, are, you, I, m, fine, это, для, на, ddd
+shortest_ending_d: ddd
+words_desc_len (21 items): ррбббсс, паттерн, Thanks, замены, Hello, World, This, TEST, text, fine, How, are, you, это, для...
